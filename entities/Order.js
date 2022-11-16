@@ -4,7 +4,7 @@ module.exports = class Order {
   #user;
 
   constructor(items, user) {
-    items.forEach((product, quantity) => {
+    items.forEach(({ product, quantity }) => {
       if (quantity > product.inStock) {
         throw new Error("Stock not enough! Available stock: " + quantity);
       }
@@ -17,7 +17,7 @@ module.exports = class Order {
     );
   }
 
-  get() {
+  get data() {
     return {
       items: this.#items,
       user: this.#user,
